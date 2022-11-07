@@ -1,0 +1,63 @@
+h1{
+    margin-top: 94px;
+    font-weight: 700;
+    size: 34px;
+    line-height: 39px;
+    font-family: Inter;
+    font-style: normal;
+    position: absolute;
+}
+p {
+    position: absolute;
+    width: 264px;
+    height: 19px;
+    left: 24px;
+    top: 150px;
+    font-style: normal;
+    line-height: 19px;
+}
+.form
+{
+    position: absolute;
+    top: 350px;
+}
+.input-l
+{
+    box-sizing: border-box;
+    position: absolute;
+    width: 331px;
+    height: 64px;
+    top: 30px;
+    background: #393E46;
+    border: 1px solid #FFFFFF;
+    border-radius: 15px;
+}
+.input-s
+{
+    box-sizing: border-box;
+    position: absolute;
+    width: 331px;
+    height: 64px;
+    top: 120px;
+    background: #393E46;
+    border: 1px solid #FFFFFF;
+    border-radius: 15px;
+}
+.signup-msg
+{
+    position: absolute;
+    width: 300px;
+    height: 19px;
+    top: 850px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    left: 50px;
+}
+.password{
+width: 100%;
+    margin-top: 150px;
+}

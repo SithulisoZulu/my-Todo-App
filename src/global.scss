@@ -24,3 +24,89 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-content{
+    --background:#393E46;
+    --color:#ffffff;
+}
+ion-tab-bar{
+    --background:#393E46;
+    --color:#ffffff;
+}
+ion-card{
+    --background:#222831;
+    --color:#ffffff;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 10px;
+}
+ion-button{
+    --background: #222831;
+}
+ion-item{
+    --background:#393E46;
+    --color:#ffffff;
+    width: 365px;
+}
+.container
+{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.service-logo
+{
+    background-color: #222831;
+    color: #ffffff;
+    position: absolute;
+    width: 174px;
+    height: 66px;
+    left: 24px;
+    top: 200px;
+    border-radius:12px ;
+    text-align: center;
+}
+.service
+{
+    margin-top: 8%;
+}
+.service2
+{
+    margin-top: 4%;
+}
+.password
+{
+    position: absolute;
+}
+.login-btn
+{
+    position: absolute;
+    width: 331px;
+    height: 67px;
+    left: 24px;
+    top: 591px;
+}
+.login-lb
+{
+    width: 90px;
+    height: 26px;
+    left: 161px;
+    top: 612px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+}
+.service-logo-profile-p
+{
+    background-color: #222831;
+    color: #ffffff;
+    position: absolute;
+    width: 174px;
+    height: 45px;
+    left: 180px;
+    top: 200px;
+    border-radius:12px ;
+    text-align: center;
+}
