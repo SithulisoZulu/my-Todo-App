@@ -27,6 +27,11 @@ ion-avatar{
         height: 50px;   
     }
 }
+h4{
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 700;
+}
 h3{
     margin-top: 100%;
     color: #ffffff;
@@ -35,59 +40,56 @@ h3{
     font-size: 20px;
     line-height: 24px;
 }
-.title
+.actions
 {
-    margin-bottom: 8%;
+    margin-left: 57%;
 }
-.title-comp
+.action
 {
-    margin-top: 8%;
-}
-.title-lb
-{
-    font-size: 20px;
-    font-weight: 200;
-}
-.content-holder
-{
-    margin-top: 2%;
-    background-color: #222831;
-    border-radius: 10px;
-    padding-top: 1px;
-    padding-right: 3px;
-    padding-bottom: 3%;
-}
-h4{
-    text-align: start;
-    margin-left: 10px;
+    padding-left: 5px;
 }
 .notes
 {
-    margin-left: 10px;
-    text-align: start;
-    margin-top: 6%;
-    margin-right: 8px;
+    margin-top: 10%;
 }
-.note{
-    font-size: 13px;
+.notes-icon
+{
+    margin-top: 7px;
+}
+p{
+    margin-left: 6%;
+    margin-top: -1px;
 }
 .times
 {
-    margin-top: 6%;
-    margin-left: 10px;
-    background-color: #D65A31;
-    width: 30%;
+    margin-top: 7px;
+}
+.time-holder
+{
     border-radius: 10px;
-    height: 30px;
+    margin-left: 5%;
+    width: 30%;
     text-align: center;
-    padding: 6px;
+    border: 1px solid #ffffff;
 }
-.more
+.time-slot
 {
-    margin-left: 135px;
+    text-align: center;
+    margin-top: 5px;
+}
+.footer
+{
+    background-color: #222831;
+    color: #ffffff;
+}
+.complete
+{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #222831;
+    text-align: end;
+    margin-right: 7%;
+    font-style: normal;
     font-weight: 500;
-}
-.add
-{
-    margin-left: 70%;
+    font-size: 19px;
 }

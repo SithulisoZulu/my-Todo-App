@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'addtasksheet',
     loadChildren: () => import('./bottomsheets/addtasksheet/addtasksheet.module').then( m => m.AddtasksheetPageModule)
+  },
+  {
+    path: 'taskdetails',
+    loadChildren: () => import('./screens/taskdetails/taskdetails.module').then( m => m.TaskdetailsPageModule)
   }
 ];
 @NgModule({

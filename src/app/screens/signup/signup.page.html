@@ -18,22 +18,19 @@
 
     <div class="form">
          <div>
-          <ion-label>Email Address</ion-label>
-          <ion-input type="text" placeholder="okasithulo@outlook.com"  required="required" class="input-l"></ion-input>
+          <ion-input type="text" placeholder="Enter Your Name"  required="required" class="input-l"><ion-icon name="person-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
         
         <div>
-          <ion-label class="password">Password</ion-label>
-          <ion-input type="password" placeholder="okasithulo@outlook.com"  required="required" class="input-s"></ion-input>
+          <ion-input type="email" placeholder="Email Address"  required="required" class="input-s"><ion-icon name="mail-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
 
         <div>
-          <ion-label class="password">Password</ion-label>
-          <ion-input type="password" placeholder="okasithulo@outlook.com"  required="required" class="input-s-p"></ion-input>
+          <ion-input type="password" placeholder="Enter Password"  required="required" class="input-s-p"><ion-icon name="lock-closed-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
     </div>
 
-    <ion-button class="signup-btn"><ion-label class="login-lb">Sign Up</ion-label></ion-button>
+    <ion-button class="signup-btn" (Click)="showToast()"><ion-label class="login-lb">Sign Up</ion-label></ion-button>
 
     <p class="signup-msg" routerLink="../login">Already have an account.? <span style="color: orange;">Login</span></p>
   </div>

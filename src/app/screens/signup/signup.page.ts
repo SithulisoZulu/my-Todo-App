@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPage implements OnInit {
 
-  constructor() { }
+  constructor(private toast: ToastController) { }
 
   ngOnInit() {
+    this.showToast;
   }
+  showToast(messege: string)
+  {
+    this.toast.create({
+      message: "Welcome to your application",
+      duration: 3000,
+      position: "top",
 
+    }).then((toastData) => toastData.present())
+  }
 }

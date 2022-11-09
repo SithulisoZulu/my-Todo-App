@@ -17,8 +17,8 @@ export class AddTaskPage implements OnInit {
   async add() {
     const modal = await this.ModalCtrl.create({
       component: AddtasksheetPage,
-      breakpoints: [0, 0.3, 0.4, 0.8],
-      initialBreakpoint: 0.8,
+      breakpoints: [0, 0.3, 0.7],
+      initialBreakpoint: 0.7,
     });
     await modal.present();
   }

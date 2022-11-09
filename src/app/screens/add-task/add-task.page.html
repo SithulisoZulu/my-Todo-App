@@ -14,7 +14,9 @@
 
   <div class="container">
     <div class="title">
+      <ion-row></ion-row>
       <label class="title-lb">Tasks (4)</label>
+      <ion-icon name="add-circle-outline" class="add" style="zoom: 1.7;" (onClick)="add()"></ion-icon>
     </div>
 
     <div class="content-holder">
@@ -45,13 +47,6 @@
       <div class="times">
         <label>This month</label>
       </div>
-    </div>
-
-    <div class="title-comp">
-      <ion-row>
-        <label class="title-lb">Completed (10)</label>
-        <ion-icon class="more" name="chevron-forward-outline" style="zoom: 1.5;"></ion-icon>
-      </ion-row>
     </div>
   </div>
 
