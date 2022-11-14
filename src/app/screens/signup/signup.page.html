@@ -18,19 +18,19 @@
 
     <div class="form">
          <div>
-          <ion-input type="text" placeholder="Enter Your Name"  required="required" class="input-l"><ion-icon name="person-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
+          <ion-input type="text" placeholder="Enter Your Name"  required="required" class="input-l" [(ngModel)]="user.name"><ion-icon name="person-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
         
         <div>
-          <ion-input type="email" placeholder="Email Address"  required="required" class="input-s"><ion-icon name="mail-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
+          <ion-input type="email" placeholder="Email Address"  required="required" class="input-s" [(ngModel)]="user.email" (onkeydown)="checkemail()"><ion-icon name="mail-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
 
         <div>
-          <ion-input type="password" placeholder="Enter Password"  required="required" class="input-s-p"><ion-icon name="lock-closed-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
+          <ion-input type="password" placeholder="Enter Password"  required="required" class="input-s-p" [(ngModel)]="user.password"><ion-icon name="lock-closed-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
     </div>
 
-    <ion-button class="signup-btn" (Click)="showToast()"><ion-label class="login-lb">Sign Up</ion-label></ion-button>
+    <ion-button class="signup-btn" (Click)="showToast()"><ion-label class="login-lb" (click)="validation()">Sign Up</ion-label></ion-button>
 
     <p class="signup-msg" routerLink="../login">Already have an account.? <span style="color: orange;">Login</span></p>
   </div>
