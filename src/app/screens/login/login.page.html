@@ -9,15 +9,15 @@
 
     <div class="form">
          <div>
-          <ion-input type="email" placeholder="okasithulo@outlook.com"  required="required" class="input-l"><ion-icon name="mail-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
+          <ion-input type="email" placeholder="okasithulo@outlook.com"  required="required" class="input-l" [(ngModel)]="user.email"><ion-icon name="mail-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
         
         <div>
-          <ion-input type="password" placeholder="okasithulo@outlook.com"  required="required" class="input-s"><ion-icon name="lock-closed-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
+          <ion-input type="password" placeholder="okasithulo@outlook.com"  required="required" class="input-s" [(ngModel)]="user.password"><ion-icon name="lock-closed-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
         </div>
     </div>
 
-    <ion-button class="login-btn"><ion-label class="login-lb" routerLink="../home">Login</ion-label></ion-button>
+    <ion-button class="login-btn"><ion-label class="login-lb" (click)="login()">Login</ion-label></ion-button>
 
     <p class="signup-msg" routerLink="../signup">Don't have an account.? <span style="color: orange;">Sign Up</span></p>
   </div>
