@@ -6,19 +6,19 @@
 
     <div class="form">
       <div>
-        <ion-input type="text" placeholder="Enter Your Name"  required="required" class="input-l"><ion-icon name="person-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
+        <ion-input type="text" placeholder="Add Title to your task"  required="required" class="input-l" [(ngModel)]="tasks.title"><ion-icon name="person-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
       </div>
     
       <div>
-        <textarea cols="30" rows="10" type="email" placeholder="Add Notes"  required="required" class="input-s"></textarea>
+        <textarea cols="30" rows="10" type="text" placeholder="Add Notes"  required="required" class="input-s" [(ngModel)]="tasks.notes"></textarea>
       </div>
 
       <div>
-        <ion-input type="password" placeholder="Enter Password"  required="required" class="input-s-p"><ion-icon name="lock-closed-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
+        <ion-input type="text" placeholder="Add Deadline to your task"  required="required" class="input-s-p" [(ngModel)]="tasks.deadline"><ion-icon name="lock-closed-outline" style="zoom: 1.5;" class="l-s-input"></ion-icon></ion-input>
       </div>
     </div>
 
-        <ion-button class="signup-btn"><ion-label class="login-lb"> Add Task</ion-label></ion-button>
+        <ion-button class="signup-btn"><ion-label class="login-lb" (click)="addtasks()"> Add Task</ion-label></ion-button>
 
   </div>
 </ion-content>
