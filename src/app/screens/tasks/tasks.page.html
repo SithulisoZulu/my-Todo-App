@@ -17,33 +17,15 @@
       <label class="title-lb">Tasks (4)</label>
     </div>
 
-    <div class="content-holder" routerLink="/taskdetails">
-      <h4>Dut Appfactory Meeting</h4>
-      <div class="notes">
-        <label class="note">Attend daily meeting and do workAttend daily meeting and do work</label>
-      </div>
-      <div class="times">
-        <label>Today, 09:50</label>
-      </div>
-    </div>
-
-    <div class="content-holder border-left">
-      <h4>Mobile Dev Workshop</h4>
-      <div class="notes">
-        <label class="note">Talk about Ionic Framework, Angular Framework, and Firebase for tge backend</label>
-      </div>
-      <div class="times">
-        <label>Next week</label>
-      </div>
-    </div>
-
-    <div class="content-holder">
-      <h4>Study for Microsoft exam</h4>
-      <div class="notes">
-        <label class="note">Learn more about power platform</label>
-      </div>
-      <div class="times">
-        <label>This month</label>
+    <div *ngFor="let task of tasks">
+      <div class="content-holder" routerLink="/taskdetails">
+        <h4>{{task.title}}</h4>
+        <div class="notes">
+          <label class="note">{{task.notes}}</label>
+        </div>
+        <div class="times">
+          <label>{{task.deadline}}</label>
+        </div>
       </div>
     </div>
 

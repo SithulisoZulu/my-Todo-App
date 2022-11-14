@@ -34,10 +34,11 @@ export class AddtasksheetPage implements OnInit {
 
  async addtasks()
   {
-    this.store.collection('tasks').doc(this.loggedUser).set({
+    this.store.collection('tasks').doc().set({
       title: this.tasks.title,
       notes: this.tasks.notes,
-      deadline: this.tasks.deadline
+      deadline: this.tasks.deadline,
+      email: this.loggedUser
     });
   }
 }
