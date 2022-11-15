@@ -27,8 +27,7 @@ export class LoginPage implements OnInit {
         message: messege,
         duration: 3000,
         position: 'top',
-      })
-      .then((toastData) => toastData.present());
+    }).then((toastData) => toastData.present());
   }
 
   validation() {
@@ -43,8 +42,7 @@ export class LoginPage implements OnInit {
     return true;
   }
 
-  login()
-  {
+  login() {
     this.load.create({
       message: 'Autheticating...',
       spinner: 'circles',

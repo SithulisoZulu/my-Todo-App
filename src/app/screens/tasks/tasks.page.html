@@ -3,22 +3,22 @@
       <ion-item lines="none">
         <ion-col>
           <ion-label>Welcome Back,</ion-label>
-          <h1>Sithuliso</h1>
+          <h1 *ngFor="let user of user">{{user.name}}</h1>
         </ion-col>
-        <ion-avatar>
+       <!-- <ion-avatar>
           <img src="./assets/img/pp.jpg" alt="">
-        </ion-avatar>
+        </ion-avatar>-->
       </ion-item>
     </div>
     <br>
 
   <div class="container">
     <div class="title">
-      <label class="title-lb">Tasks (4)</label>
+      <label class="title-lb">Tasks</label>
     </div>
 
     <div *ngFor="let task of tasks">
-      <div class="content-holder" routerLink="/taskdetails">
+      <div class="content-holder" (click)="navigate(task.taskid)">
         <h4>{{task.title}}</h4>
         <div class="notes">
           <label class="note">{{task.notes}}</label>

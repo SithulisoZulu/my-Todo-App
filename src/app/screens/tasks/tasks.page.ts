@@ -12,7 +12,9 @@ import { ToastController, LoadingController } from '@ionic/angular';
 })
 export class TasksPage implements OnInit {
   tasks: any = [];
+  user: any = [];
   loggedUser: string;
+  taskslength: string
   constructor(
     private toast: ToastController,
     private load: LoadingController,
@@ -24,16 +26,36 @@ export class TasksPage implements OnInit {
   ngOnInit() {
     this.loggedUser = localStorage.getItem('loggedinuser');
     this.gettasks();
+    this.getuser();
   }
 
   gettasks() {
-    this.db.collection<any>('tasks', (ref) => 
-      ref.where('email', '==', this.loggedUser)
-    )
-    .valueChanges().subscribe((res)=>
-    {
-      this.tasks = res;
-      console.log(this.tasks);
-    })
+    this.db
+      .collection<any>('tasks', (ref) =>
+        ref.where('email', '==', this.loggedUser)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.tasks = res;
+        console.log(this.tasks);
+        this.taskslength = this.tasks.length
+    });
+  }
+
+  getuser() {
+    this.db
+      .collection<any>('users', (ref) =>
+        ref.where('email', '==', this.loggedUser)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.user = res;
+        console.log(this.tasks);
+      });
+  }
+
+  navigate(task) {
+    this.router.navigate(['taskdetails']);
+    localStorage.setItem('taskid', task);
   }
 }

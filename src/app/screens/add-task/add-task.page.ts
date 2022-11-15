@@ -1,5 +1,8 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { AddtasksheetPage } from 'src/app/bottomsheets/addtasksheet/addtasksheet.page';
 
 @Component({
@@ -8,10 +11,24 @@ import { AddtasksheetPage } from 'src/app/bottomsheets/addtasksheet/addtasksheet
   styleUrls: ['./add-task.page.scss'],
 })
 export class AddTaskPage implements OnInit {
-  constructor(private ModalCtrl: ModalController) {}
+  tasks: any = [];
+  loggedUser: string;
+  user: any = [];
+  taskslength: string;
+  constructor(
+    private ModalCtrl: ModalController,
+    private toast: ToastController,
+    private load: LoadingController,
+    private Auth: AngularFireAuth,
+    private router: Router,
+    private db: AngularFirestore
+  ) {}
 
   ngOnInit() {
     this.add();
+    this.loggedUser = localStorage.getItem('loggedinuser');
+    this.gettasks();
+    this.getuser();
   }
 
   async add() {
@@ -21,5 +38,30 @@ export class AddTaskPage implements OnInit {
       initialBreakpoint: 0.7,
     });
     await modal.present();
+  }
+
+  gettasks() {
+    this.db
+      .collection<any>('tasks', (ref) =>
+        ref.where('email', '==', this.loggedUser)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.tasks = res;
+        console.log(this.tasks);
+        this.taskslength = this.tasks.length;
+      });
+  }
+
+  getuser() {
+    this.db
+      .collection<any>('users', (ref) =>
+        ref.where('email', '==', this.loggedUser)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.user = res;
+        console.log(this.tasks);
+      });
   }
 }
