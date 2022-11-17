@@ -18,7 +18,7 @@
     </div>
 
     <div *ngFor="let task of tasks">
-      <div class="content-holder" routerLink="/taskdetails">
+      <div class="content-holder" (click)="navigate(task.taskid)">
         <h4>{{task.title}}</h4>
         <div class="notes">
           <label class="note">{{task.notes}}</label>

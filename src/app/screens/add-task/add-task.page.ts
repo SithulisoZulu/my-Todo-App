@@ -64,4 +64,9 @@ export class AddTaskPage implements OnInit {
         console.log(this.tasks);
       });
   }
+
+  navigate(task) {
+    this.router.navigate(['taskdetails']);
+    localStorage.setItem('taskid', task);
+  }
 }
