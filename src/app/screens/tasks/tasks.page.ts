@@ -16,9 +16,6 @@ export class TasksPage implements OnInit {
   loggedUser: string;
   taskslength: string
   constructor(
-    private toast: ToastController,
-    private load: LoadingController,
-    private Auth: AngularFireAuth,
     private router: Router,
     private db: AngularFirestore
   ) {}
@@ -37,7 +34,6 @@ export class TasksPage implements OnInit {
       .valueChanges()
       .subscribe((res) => {
         this.tasks = res;
-        console.log(this.tasks);
         this.taskslength = this.tasks.length
     });
   }
@@ -50,7 +46,6 @@ export class TasksPage implements OnInit {
       .valueChanges()
       .subscribe((res) => {
         this.user = res;
-        console.log(this.tasks);
       });
   }
 

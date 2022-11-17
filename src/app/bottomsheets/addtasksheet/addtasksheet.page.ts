@@ -5,6 +5,8 @@ import { User } from 'src/app/models/user.model';
 import { tasks } from 'src/app/models/tasks.model';
 import { uuidv4 } from '@firebase/util';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-addtasksheet',
   templateUrl: './addtasksheet.page.html',
@@ -18,7 +20,9 @@ export class AddtasksheetPage implements OnInit {
   constructor(
     private store: AngularFirestore,
     private toast: ToastController,
-    private router: Router
+    private router: Router,
+    private previos: Location,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -36,19 +40,29 @@ export class AddtasksheetPage implements OnInit {
   }
 
   async addtasks() {
+    var id = (this.myuuid = uuidv4());
     this.store
       .collection('tasks')
-      .doc()
+      .doc(id)
       .set({
         title: this.tasks.title,
         notes: this.tasks.notes,
         deadline: this.tasks.deadline,
         email: this.loggedUser,
-        taskid: (this.myuuid = uuidv4()),
+        taskid: id
       })
       .then(() => {
         this.showToast('Your Task was Added');
         this.router.navigate(['home']);
+        this.dismissModal();
       });
+  }
+
+  back() {
+    this.previos.back();
+  }
+
+  dismissModal() {
+    this.modalCtrl.dismiss();
   }
 }

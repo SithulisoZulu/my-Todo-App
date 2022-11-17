@@ -1,9 +1,40 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>account</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+    <div class="head">
+        <ion-item lines="none">
+            <ion-col>
+            <ion-label>Welcome Back,</ion-label>
+            <h1 *ngFor="let user of user">{{user.name}}</h1>
+            </ion-col>
+        </ion-item>
+    </div>
+    <div class="container">
+        <ion-row>
+            <ion-col routerLink="/home">
+                <ion-icon name="calendar-outline" style="zoom:1.4" class="icon-pa"></ion-icon>
+                <ion-label class="task-cont">{{taskslength}}</ion-label>
+                <ion-label>
+                    Active Tasks
+                </ion-label>
+            </ion-col>
 
+            <ion-col>
+                <ion-icon name="checkmark-done-outline" style="zoom:1.4" class="icon-pa"></ion-icon>
+                <ion-label class="task-cont">2</ion-label>
+                <ion-label>
+                    Completed Tasks
+                </ion-label>
+            </ion-col>
+        </ion-row>
+
+        <div class="divider"></div>
+
+        <div class="actions">
+            <div class="action" (click)=" logout()">
+                Logout
+            </div>
+            <div class="action" (click)="deleteAccount()">
+                Delete account
+            </div>
+        </div>
+    </div>
 </ion-content>

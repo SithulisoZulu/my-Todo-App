@@ -42,6 +42,14 @@ const routes: Routes = [
   {
     path: 'taskdetails',
     loadChildren: () => import('./screens/taskdetails/taskdetails.module').then( m => m.TaskdetailsPageModule)
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./bottomsheets/logout/logout.module').then( m => m.LogoutPageModule)
+  },
+  {
+    path: 'delete-account',
+    loadChildren: () => import('./bottomsheets/delete-account/delete-account.module').then( m => m.DeleteAccountPageModule)
   }
 ];
 @NgModule({

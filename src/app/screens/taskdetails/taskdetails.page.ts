@@ -35,6 +35,16 @@ export class TaskdetailsPage implements OnInit {
     this.getuser();
   }
 
+  showToast(messege: string) {
+    this.toast
+      .create({
+        message: messege,
+        duration: 3000,
+        position: 'top',
+      })
+      .then((toastData) => toastData.present());
+  }
+
   gettaskdetails() {
     this.store
       .collection<any>('tasks', (ref) => ref.where('taskid', '==', this.taskid))
@@ -53,7 +63,7 @@ export class TaskdetailsPage implements OnInit {
       .subscribe((res) => {
         this.user = res;
         console.log(this.tasks);
-    });
+      });
   }
 
   addtoliked() {
@@ -68,5 +78,11 @@ export class TaskdetailsPage implements OnInit {
 
   back() {
     this.previos.back();
+  }
+
+  deletetask(taskid) {
+    this.store.collection('tasks').doc(taskid).delete();
+    this.showToast("Your Task has been deleted");
+    this.router.navigate(['home']);
   }
 }
