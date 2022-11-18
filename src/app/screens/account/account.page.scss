@@ -40,7 +40,7 @@ h3{
     padding-right: 7px;
 }
 .task-cont{
-    font-size: 20px;
+    font-size: 18px;
     top: 100%;
 }
 .divider
@@ -63,4 +63,45 @@ h3{
 }
 .sec-item{
     margin-left: 18%;
+}
+.title {
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+.tasks {
+    margin-top: 8%;
+}
+.content-holder
+{
+    margin-top: 2%;
+    background-color: #222831;
+    border-radius: 10px;
+    padding-top: 1px;
+    padding-right: 3px;
+    padding-bottom: 3%;
+}
+h4{
+    text-align: start;
+    margin-left: 10px;
+}
+.notes
+{
+    margin-left: 10px;
+    text-align: start;
+    margin-top: 6%;
+    margin-right: 8px;
+}
+.note{
+    font-size: 13px;
+}
+.times
+{
+    margin-top: 6%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #D65A31;
+    border-radius: 10px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
 }

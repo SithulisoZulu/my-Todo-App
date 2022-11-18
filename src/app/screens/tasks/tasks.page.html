@@ -32,9 +32,21 @@
     <div class="divider"></div>
     <div class="title-comp">
       <ion-row>
-        <label class="title-lb">Completed (10)</label>
-        <ion-icon class="more" name="chevron-forward-outline" style="zoom: 1.5;"></ion-icon>
+        <label class="title-lb">Completed {{completedlength}}</label>
+        <ion-icon class="more" name="chevron-forward-outline" style="zoom: 1.5;" routerLink="/alltasks"></ion-icon>
       </ion-row>
+
+    <div *ngFor="let completdtask of completedtasks">
+      <div class="content-holder">
+        <h4>{{completdtask.title}}</h4>
+        <div class="notes">
+          <label class="note">{{completdtask.notes}}</label>
+        </div>
+        <div class="times">
+          <label>{{completdtask.deadline}}</label>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 

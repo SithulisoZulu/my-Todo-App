@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,13 @@ export class LoginPage implements OnInit {
     private toast: ToastController,
     private load: LoadingController,
     private Auth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private modalCtrl: ModalController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dismissModal();
+  }
 
   showToast(messege: string) {
     this.toast
@@ -27,7 +31,8 @@ export class LoginPage implements OnInit {
         message: messege,
         duration: 3000,
         position: 'top',
-    }).then((toastData) => toastData.present());
+      })
+      .then((toastData) => toastData.present());
   }
 
   validation() {
@@ -43,44 +48,48 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.load.create({
-      message: 'Autheticating...',
-      spinner: 'circles',
-      duration: 50000,
-    }).then((overlay)=>
-    {
-      this.loading = overlay;
-    });
-    setTimeout(()=>
-    {
-      this.loading.dismiss();
-      if(this.validation())
-      { this.Auth.signInWithEmailAndPassword(this.user.email, this.user.password)
-      .then(async (userCredential)=>
-      {
-        this.loading.present();
-        const user = this.Auth.currentUser;
-        if(user)
-        {
-          const emailVerified = (await user).emailVerified;
-          if(emailVerified == true)
-          {
-            const params: NavigationExtras={queryParams:{userVal:this.user.name}};
-            this.router.navigate(['home'], params);
-            localStorage.setItem('loggedinuser', this.user.email)
-            this.loading.dismiss();
-          }
-          else
-          {
-            this.showToast("please verify your email");
-          }
-        }
+    this.load
+      .create({
+        message: 'Autheticating...',
+        spinner: 'circles',
+        duration: 50000,
       })
-      .catch((error)=>{
-        this.showToast(error);
-        this.loading.dismiss();
+      .then((overlay) => {
+        this.loading = overlay;
       });
+    setTimeout(() => {
+      this.loading.dismiss();
+      if (this.validation()) {
+        this.Auth.signInWithEmailAndPassword(
+          this.user.email,
+          this.user.password
+        )
+          .then(async (userCredential) => {
+            this.loading.present();
+            const user = this.Auth.currentUser;
+            if (user) {
+              const emailVerified = (await user).emailVerified;
+              if (emailVerified == true) {
+                const params: NavigationExtras = {
+                  queryParams: { userVal: this.user.name },
+                };
+                this.router.navigate(['home'], params);
+                localStorage.setItem('loggedinuser', this.user.email);
+                this.loading.dismiss();
+              } else {
+                this.showToast('please verify your email');
+              }
+            }
+          })
+          .catch((error) => {
+            this.showToast(error);
+            this.loading.dismiss();
+          });
       }
-    }, 2000)
+    }, 2000);
+  }
+
+  dismissModal() {
+    this.modalCtrl.dismiss();
   }
 }

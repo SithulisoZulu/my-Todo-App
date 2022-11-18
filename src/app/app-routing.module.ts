@@ -53,6 +53,10 @@ const routes: Routes = [
   },  {
     path: 'notasks',
     loadChildren: () => import('./bottomsheets/notasks/notasks.module').then( m => m.NotasksPageModule)
+  },
+  {
+    path: 'alltasks',
+    loadChildren: () => import('./screens/alltasks/alltasks.module').then( m => m.AlltasksPageModule)
   }
 
 ];

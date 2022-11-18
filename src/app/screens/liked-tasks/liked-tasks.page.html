@@ -18,13 +18,15 @@
       <label class="title-lb">Important Tasks</label>
     </div>
 
-    <div class="content-holder">
-      <h4>Dut Appfactory Meeting</h4>
-      <div class="notes">
-      <label class="note">Attend daily meeting and do workAttend daily meeting and do work</label>
-      </div>
-      <div class="times">
-          <label>Today, 09:50</label>
+    <div *ngFor="let task of tasks">
+      <div class="content-holder" (click)="navigate(task.taskid)">
+        <h4>{{task.title}}</h4>
+        <div class="notes">
+          <label class="note">{{task.notes}}</label>
+        </div>
+        <div class="times">
+          <label>{{task.deadline}}</label>
+        </div>
       </div>
     </div>
   </div>

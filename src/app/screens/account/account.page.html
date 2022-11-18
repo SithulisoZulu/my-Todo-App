@@ -17,9 +17,9 @@
                 </ion-label>
             </ion-col>
 
-            <ion-col class="sec-item">
+            <ion-col class="sec-item" routerLink="/alltasks">
                 <ion-icon name="checkmark-done-outline" style="zoom:1.4" class="icon-pa"></ion-icon>
-                <ion-label class="task-cont">2</ion-label>
+                <ion-label class="task-cont">{{completedlength}}</ion-label>
                 <ion-label>
                     Completed
                 </ion-label>
@@ -35,6 +35,25 @@
             <div class="action delete" (click)="deleteAccount()">
                 Delete account
             </div>
+        </div>
+
+        <div class="tasks">
+            <div class="title">
+                <label class="title-lb">Tasks</label>
+            </div>
+
+            <div *ngFor="let task of limtasks">
+                <div class="content-holder" (click)="navigate(task.taskid)">
+                    <h4>{{task.title}}</h4>
+                    <div class="notes">
+                        <label class="note">{{task.notes}}</label>
+                    </div>
+                    <div class="times">
+                        <label>{{task.deadline}}</label>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </ion-content>

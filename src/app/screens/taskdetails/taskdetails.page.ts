@@ -18,6 +18,9 @@ export class TaskdetailsPage implements OnInit {
   myuuid: string;
   task = {} as tasks;
   user: any = [];
+  x: any = [];
+  details: any = [];
+
   constructor(
     private toast: ToastController,
     private load: LoadingController,
@@ -62,18 +65,44 @@ export class TaskdetailsPage implements OnInit {
       .valueChanges()
       .subscribe((res) => {
         this.user = res;
-        console.log(this.tasks);
       });
   }
 
-  addtoliked() {
-    this.store.collection('tasks').add({
-      title: this.tasks.title,
-      notes: this.tasks.notes,
-      deadline: this.tasks.deadline,
-      email: this.loggedUser,
-      taskid: (this.myuuid = uuidv4()),
-    });
+  addtoliked(task: tasks) {
+    var id = (this.myuuid = uuidv4());
+    this.store
+      .collection('likedTasks')
+      .doc(id)
+      .set({
+        title: task.title,
+        notes: task.notes,
+        deadline: task.deadline,
+        email: this.loggedUser,
+        taskid: id,
+      })
+      .then(() => {
+        this.showToast('Task Added to Important Tasks');
+        this.router.navigate(['home/liked-task']);
+      });
+  }
+
+  addtocomplete(task: tasks) {
+    var id = (this.myuuid = uuidv4());
+    this.store
+      .collection('completedTasks')
+      .doc(id)
+      .set({
+        title: task.title,
+        notes: task.notes,
+        deadline: task.deadline,
+        email: this.loggedUser,
+        taskid: id,
+      })
+      .then(() => {
+        this.showToast('Task completed');
+        this.router.navigate(['home/liked-task']);
+        this.deletetask(this.taskid);
+      });
   }
 
   back() {
@@ -82,7 +111,8 @@ export class TaskdetailsPage implements OnInit {
 
   deletetask(taskid) {
     this.store.collection('tasks').doc(taskid).delete();
-    this.showToast("Your Task has been deleted");
+    this.showToast('Task completed');
     this.router.navigate(['home']);
   }
+
 }

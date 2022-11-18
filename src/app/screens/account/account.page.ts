@@ -12,9 +12,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class AccountPage implements OnInit {
   tasks: any = [];
+  limtasks: any = [];
   user: any = [];
+  completedtasks: any = [];
   loggedUser: string;
   taskslength: string;
+  completedlength: Int32List;
   constructor(
     private router: Router,
     private db: AngularFirestore,
@@ -25,6 +28,8 @@ export class AccountPage implements OnInit {
     this.loggedUser = localStorage.getItem('loggedinuser');
     this.getuser();
     this.gettasks();
+    this.get();
+    this.getcompletedtasks();
   }
 
   async logout() {
@@ -53,6 +58,30 @@ export class AccountPage implements OnInit {
       .valueChanges()
       .subscribe((res) => {
         this.tasks = res;
+        this.taskslength = this.tasks.length;
+      });
+  }
+
+  getcompletedtasks() {
+    this.db
+      .collection<any>('completedTasks', (ref) =>
+        ref.where('email', '==', this.loggedUser)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.completedtasks = res;
+        this.completedlength = this.completedtasks.length;
+      });
+  }
+
+  get() {
+    this.db
+      .collection<any>('tasks', (ref) =>
+        ref.where('email', '==', this.loggedUser).limit(1)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.limtasks = res;
         this.taskslength = this.tasks.length;
       });
   }

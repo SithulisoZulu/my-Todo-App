@@ -12,9 +12,11 @@ import { AddtasksheetPage } from 'src/app/bottomsheets/addtasksheet/addtasksheet
 })
 export class AddTaskPage implements OnInit {
   tasks: any = [];
+  completedtasks: any = [];
   loggedUser: string;
   user: any = [];
   taskslength: string;
+  completedlength: Int32List;
   constructor(
     private ModalCtrl: ModalController,
     private toast: ToastController,
@@ -29,12 +31,13 @@ export class AddTaskPage implements OnInit {
     this.loggedUser = localStorage.getItem('loggedinuser');
     this.gettasks();
     this.getuser();
+    this.getcompletedtasks();
   }
 
   async add() {
     const modal = await this.ModalCtrl.create({
       component: AddtasksheetPage,
-      breakpoints: [0,0.2, 0.4, 0.6],
+      breakpoints: [0, 0.2, 0.4, 0.6],
       initialBreakpoint: 0.6,
     });
     await modal.present();
@@ -50,6 +53,18 @@ export class AddTaskPage implements OnInit {
         this.tasks = res;
         console.log(this.tasks);
         this.taskslength = this.tasks.length;
+      });
+  }
+
+  getcompletedtasks() {
+    this.db
+      .collection<any>('completedTasks', (ref) =>
+        ref.where('email', '==', this.loggedUser)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.completedtasks = res;
+        this.completedlength = this.completedtasks.length;
       });
   }
 
@@ -69,4 +84,5 @@ export class AddTaskPage implements OnInit {
     this.router.navigate(['taskdetails']);
     localStorage.setItem('taskid', task);
   }
+  
 }

@@ -13,19 +13,33 @@ import { NotasksPage } from 'src/app/bottomsheets/notasks/notasks.page';
 })
 export class TasksPage implements OnInit {
   tasks: any = [];
+  completedtasks: any = [];
   user: any = [];
   loggedUser: string;
   taskslength: Int32List;
+  completedlength: Int32List;
   constructor(
     private router: Router,
     private db: AngularFirestore,
-    private ModalCtrl: ModalController
+    private ModalCtrl: ModalController,
+    private toast: ToastController
   ) {}
 
   ngOnInit() {
     this.loggedUser = localStorage.getItem('loggedinuser');
     this.gettasks();
     this.getuser();
+    this.getcompletedtasks();
+  }
+
+  showToast(messege: string) {
+    this.toast
+      .create({
+        message: messege,
+        duration: 3000,
+        position: 'top',
+      })
+      .then((toastData) => toastData.present());
   }
 
   async notasks() {
@@ -47,8 +61,20 @@ export class TasksPage implements OnInit {
         this.tasks = res;
         this.taskslength = this.tasks.length;
         if (this.tasks.length == 0) {
-          this.notasks(); 
+          this.notasks();
         }
+      });
+  }
+
+  getcompletedtasks() {
+    this.db
+      .collection<any>('completedTasks', (ref) =>
+        ref.where('email', '==', this.loggedUser)
+      )
+      .valueChanges()
+      .subscribe((res) => {
+        this.completedtasks = res;
+        this.completedlength = this.completedtasks.length;
       });
   }
 
@@ -66,5 +92,11 @@ export class TasksPage implements OnInit {
   navigate(task) {
     this.router.navigate(['taskdetails']);
     localStorage.setItem('taskid', task);
+  }
+
+  deletetask(taskid) {
+    this.db.collection('tasks').doc(taskid).delete();
+    this.showToast('Task deleted permanently');
+    this.router.navigate(['home']);
   }
 }

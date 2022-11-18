@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="container">
+        <div class="head">
+      <ion-item lines="none">
+        <ion-col>
+          <ion-label>Welcome Back,</ion-label>
+          <h1 *ngFor="let user of user">{{user.name}}</h1>
+        </ion-col>
+       <!-- <ion-avatar>
+          <img src="./assets/img/pp.jpg" alt="">
+        </ion-avatar>-->
+      </ion-item>
+    </div>
+    <br>
+
+    <ion-row>
+      <ion-icon name="arrow-back-outline" style="zoom: 1.6;" (click)="back()"></ion-icon>
+    </ion-row>
+
+    <div class="tasks">
+      <div *ngFor="let task of completedtasks" >
+        <div class="content-holder" (click)="navigate(task.taskid)">
+          <h4>{{task.title}}</h4>
+          <div class="notes">
+            <label class="note">{{task.notes}}</label>
+          </div>
+          <div class="times">
+            <label>{{task.deadline}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
