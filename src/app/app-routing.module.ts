@@ -50,7 +50,11 @@ const routes: Routes = [
   {
     path: 'delete-account',
     loadChildren: () => import('./bottomsheets/delete-account/delete-account.module').then( m => m.DeleteAccountPageModule)
+  },  {
+    path: 'notasks',
+    loadChildren: () => import('./bottomsheets/notasks/notasks.module').then( m => m.NotasksPageModule)
   }
+
 ];
 @NgModule({
   imports: [

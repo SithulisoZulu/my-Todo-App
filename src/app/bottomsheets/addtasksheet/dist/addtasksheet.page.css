@@ -1,0 +1,61 @@
+.head {
+  text-align: center;
+  margin-top: 7%;
+}
+
+.form {
+  position: absolute;
+  top: 132px;
+}
+
+.input-s {
+  box-sizing: border-box;
+  position: absolute;
+  width: 360px;
+  height: 94px;
+  top: 90px;
+  background: #393E46;
+  border: 1px solid #FFFFFF;
+  border-radius: 15px;
+}
+
+.input-l {
+  box-sizing: border-box;
+  position: absolute;
+  width: 360px;
+  height: 64px;
+  top: 1px;
+  background: #393E46;
+  border: 1px solid #FFFFFF;
+  border-radius: 15px;
+}
+
+.input-s-p {
+  box-sizing: border-box;
+  position: absolute;
+  width: 360px;
+  height: 64px;
+  top: 207px;
+  background: #393E46;
+  border: 1px solid #FFFFFF;
+  border-radius: 15px;
+}
+
+.signup-btn {
+  position: absolute;
+  width: 360px;
+  height: 67px;
+  left: 24px;
+  top: 450px;
+}
+
+.login-lb {
+  height: 26px;
+  top: 690px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  text-align: center;
+}
