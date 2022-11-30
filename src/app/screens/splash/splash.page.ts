@@ -10,15 +10,19 @@ import { StatusBar } from '@capacitor/status-bar';
 export class SplashPage implements OnInit {
 
   constructor(private router:Router) {
-    setTimeout(() =>
-    {
-      this.router.navigateByUrl('login');
-    },4000)
+
    }
 
   ngOnInit() {
     StatusBar.setBackgroundColor({ color: '#393E46'});
     StatusBar.setOverlaysWebView({ overlay: false });
+    this.navigate();
   }
 
+  navigate()
+  {
+    setTimeout(() => {
+      this.router.navigateByUrl('login');
+    }, 4000);
+  }
 }
