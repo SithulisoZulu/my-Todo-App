@@ -18,6 +18,7 @@ export class SplashPage implements OnInit {
 
   ngOnInit() {
     StatusBar.setBackgroundColor({ color: '#393E46'});
+    StatusBar.setOverlaysWebView({ overlay: false });
   }
 
 }
