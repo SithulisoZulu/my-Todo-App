@@ -10,9 +10,9 @@
 }
 .title{
     text-align: center;
+        font-family: title;
         -webkit-animation: slide-in-fwd-bottom 1.5s ease-in-out both;
-	 animation: slide-in-fwd-bottom 1.5s ease-in-out both;
-     font-family: title;
+	animation: slide-in-fwd-bottom 1.5s ease-in-out both;
 }
 .load{
     text-align: center;
